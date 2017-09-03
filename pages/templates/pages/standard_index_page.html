@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags navigation_tags wagtailimages_tags %}
+{% load onmarket_website_utils %}
+
+{% block content %}
+<div id="content" class="row">
+  <div id="standard_page" class="medium-9 columns">
+      <h4><strong>{{ self.title }}</strong></h4>
+      <h5 class="subheader">{{ self.subtitle }}</h5>
+      <hr>
+
+      {% include "pages/includes/intro.html" with intro=self.intro only %}
+  </div>
+  <div id="sidebar" class="hide-for-print hide-for-small-only medium-3 columns">
+    {% secondary_menu calling_page=self %}
+  </div>
+</div>
+{% endblock %}

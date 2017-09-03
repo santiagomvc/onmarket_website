@@ -1,0 +1,16 @@
+{% extends "blog/blog_base.html" %}
+{% load wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags %}
+
+{% block canonical_url %}
+    <link rel="amphtml" href="{{ request.site.root_url }}{% routablepageurl page "amp" %}" />
+{% endblock %}
+
+{% block article_content %}
+<article id="blog_post">
+  {% include "utils/includes/social_share.html" %}
+  {% include "blog/includes/blog_header.html" %}
+  {% include "blog/includes/blog_body.html" with body=self.body only %}
+  <br>
+  {% include "utils/includes/related_links.html" with related_links=self.related_links.all only %}
+</article>
+{% endblock %}
